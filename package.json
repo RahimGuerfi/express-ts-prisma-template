@@ -1,0 +1,37 @@
+{
+  "name": "express-ts-prisma-template",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/app.ts",
+    "clean": "rimraf dist/*",
+    "build": "pnpm run clean && tsc && tsc-alias",
+    "start": "node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^5.0.1",
+    "tsconfig-paths": "^4.2.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.1",
+    "eslint": "^9.20.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.0",
+    "prisma": "^6.3.1",
+    "rimraf": "^6.0.1",
+    "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.7.3"
+  }
+}
