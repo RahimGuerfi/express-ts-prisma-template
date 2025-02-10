@@ -107,6 +107,71 @@ The template includes a global error handler that automatically catches errors a
 
 ---
 
+## 🛠️ Optional: Setting Up Prisma  
+
+This template does **not** come with Prisma configured by default. If you want to use Prisma as your ORM, follow these steps:  
+
+### 1️⃣ Initialize Prisma  
+Run the following command to create the required files:  
+```sh
+npx prisma init
+```  
+This will generate:  
+- A `prisma` folder with a `schema.prisma` file  
+- A `.env` file for your database connection string  
+
+### 2️⃣ Configure the Database  
+Edit the `.env` file and set your database URL:  
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
+```  
+Replace the placeholders with your actual database credentials.  
+
+### 3️⃣ Define Your Data Model  
+Modify `prisma/schema.prisma` to define your database models. Example:  
+```prisma
+model Todo {
+  id        Int      @id @default(autoincrement())
+  title     String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+```  
+
+### 4️⃣ Run Migrations  
+Apply your schema to the database:  
+```sh
+npx prisma migrate dev --name init
+```  
+
+### 5️⃣ Generate Prisma Client  
+Run this command to generate the TypeScript client:  
+```sh
+npx prisma generate
+```  
+
+### 6️⃣ Use Prisma in Your Code  
+Create a `prisma.ts` file inside `src/utils`:  
+```ts
+import { PrismaClient } from '@prisma/client';
+
+export const prisma = new PrismaClient();
+```
+Then, use `prisma` inside your services, e.g., `todos.service.ts`:  
+```ts
+import { prisma } from '@/utils/prisma';
+
+export class TodoService {
+  static async getAllTodos() {
+    return await prisma.todo.findMany();
+  }
+}
+```  
+
+Now you're ready to use Prisma in your project! 🚀
+
+---
+
 ## 🔨 Running Tests
 
 To run the tests, simply run:
