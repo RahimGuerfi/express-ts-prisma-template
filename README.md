@@ -25,8 +25,8 @@ Before running the template, ensure you have the following installed:
 Clone this repository to your local machine:
 
 ```bash
-git clone https://github.com/yourusername/express-ts-prisma-boilerplate.git
-cd express-ts-prisma-boilerplate
+git clone https://github.com/yourusername/express-ts-prisma-template
+cd express-ts-prisma-template
 ```
 
 ### Install Dependencies
@@ -35,14 +35,6 @@ Install the project dependencies using **pnpm**:
 
 ```bash
 pnpm install
-```
-
-### Set Up the Database
-
-Make sure you configure your database connection in `src/config/config.ts` and apply the Prisma migrations:
-
-```bash
-pnpm prisma migrate dev
 ```
 
 ### Run the Project
